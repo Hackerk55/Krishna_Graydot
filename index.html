@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Krishna" >
+    <title>Drag & Drop </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+    <div class="container">
+        <h3>Drag & Drop </h3>
+                <!-- left Side Container-->
+
+        <div id="left">
+            <div class="list" draggable="true">
+                <img src="01.png" draggable="false"> Satsuki Kiryuin
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="03.png" draggable="false"> Luffy Monkey D.
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="02.png" draggable="false"> Izaya Orihara
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="04.png" draggable="false"> Holo the Wise Wolf
+            </div>
+        </div>
+        <!-- Right Side Container-->
+        <div id="right">
+
+        </div>
+        <button id="reset">
+            <span class="transition"></span>
+            <span class="gradient"></span>
+            <span class="label">Reset</span>
+        </button>
+    </div>
+<!--Drag & Drop JavaScript -->
+<script>
+    
+let lists = document.getElementsByClassName("list");
+let rightBox = document.getElementById("right");
+let leftBox = document.getElementById("left");
+let reset=document.getElementById("reset")
+
+const button =document.querySelector("button");
+button.addEventListener("click", () =>{
+    window.location.reload();
+});
+for(list of lists){
+
+        list.addEventListener("dragstart",function(e){
+            let selected = e.target;
+
+            rightBox.addEventListener("dragover", function(e){
+            e.preventDefault();
+        });
+            rightBox.addEventListener("drop", function(e){
+            rightBox.appendChild(selected);
+            selected = null;
+            alert("Success");
+        });
+            leftBox.addEventListener("dragover", function(e){
+            e.preventDefault();
+        });
+            leftBox.addEventListener("drop", function(e){
+            leftBox.appendChild(selected);
+            selected = null;
+            
+        });
+    })
+}
+
+</script>
+</body>
+</html>
